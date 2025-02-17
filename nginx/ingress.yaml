@@ -13,3 +13,5 @@ spec:
             name: my-nginx
             port:
               name: web
+  # tls:
+  #   certResolver: tailscaleresolver

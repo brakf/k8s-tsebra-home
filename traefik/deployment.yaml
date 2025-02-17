@@ -23,6 +23,7 @@ spec:
           args:
             - --api.insecure
             - --providers.kubernetesingress
+            - --certificatesresolvers.myresolver.tailscale=true
           ports:
             - name: web
               containerPort: 80
