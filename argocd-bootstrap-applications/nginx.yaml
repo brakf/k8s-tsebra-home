@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: nginx
-  namespace: tsebra-home
+  namespace: argocd
 spec:
   destination:
     namespace: tsebra-home
