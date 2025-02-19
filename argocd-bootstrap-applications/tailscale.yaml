@@ -16,11 +16,22 @@ spec:
       releaseName: tailscale-operator
       values:
         oauth:
-          existingSecret: "tailscale-oauth-secrets"
+          clientId: ""
+          clientSecret: ""
+        extraEnv:
+          - name: OAUTH_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                name: tailscale-oauth
+                key: clientId
+          - name: OAUTH_CLIENT_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: tailscale-oauth
+                key: clientSecret
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-    - CreateNamespace=false
-
+      - CreateNamespace=false
