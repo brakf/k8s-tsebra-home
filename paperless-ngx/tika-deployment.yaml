@@ -11,6 +11,9 @@ spec:
     matchLabels:
       app: paperless-tika
   template:
+    metadata:
+      labels:
+        app: paperless-tika
     spec:
       containers:
         - image: docker.io/apache/tika:latest
