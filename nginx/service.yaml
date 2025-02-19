@@ -8,13 +8,12 @@ metadata:
 spec:
   type: NodePort
   ports:
-  - port: 8081
+  - port: 80
     targetPort: 80
-    nodePort: 31704
     protocol: TCP
     name: http
   - port: 443
-    nodePort: 32453
+    targetPort: 443
     protocol: TCP
     name: https
   selector:

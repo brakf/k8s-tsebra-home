@@ -1,9 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: nginx-ingress
+  name: nginx
 spec:
-  ingressClassName: traefik-internal
+  ingressClassName: tailscale
   rules:
   - http:
       paths:
@@ -13,6 +13,9 @@ spec:
           service:
             name: my-nginx
             port:
-              name: http
+              name: https
+  tls:
+  - hosts:
+      - nginx
   # tls:
   #   certResolver: tailscaleresolver
