@@ -13,7 +13,7 @@ spec:
           service:
             name: my-nginx
             port:
-              name: https
+              number: 443
   tls:
   - hosts:
       - nginx
