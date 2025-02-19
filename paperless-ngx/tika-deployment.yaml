@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - env:
-            - name: JAVA_TOOL_OPTIONS #https://github.com/corretto/corretto-21/issues/85
+            - name: JAVA_OPTS #https://github.com/corretto/corretto-21/issues/85
               value: -XX:UseSVE=0
         - image: docker.io/apache/tika:latest
           name: tika
