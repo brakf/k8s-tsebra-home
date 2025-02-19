@@ -9,8 +9,12 @@ spec:
   loadBalancerClass: tailscale
   ports:
     - port: 8080
-      targetPort: dashboard
+      targetPort: 8080
+      protocol: TCP
+      name: dashboard
     - port: 80
-      targetPort: web
+      targetPort: 80
+      protocol: TCP
+      name: web
   selector:
     app: traefik
