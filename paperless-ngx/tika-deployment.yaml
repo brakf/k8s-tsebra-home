@@ -16,11 +16,12 @@ spec:
         app: paperless-tika
     spec:
       containers:
+        - env:
+            - name: JAVA_OPTS #https://github.com/corretto/corretto-21/issues/85
+              value: -XX:UseSVE=0
         - image: docker.io/apache/tika:latest
           name: tika
           ports:
             - containerPort: 9998
               protocol: TCP
-          environment: #https://github.com/corretto/corretto-21/issues/85
-            - JAVA_TOOL_OPTIONS: -XX:UseSVE=0
       restartPolicy: Always
