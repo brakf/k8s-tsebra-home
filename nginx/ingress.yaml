@@ -9,7 +9,6 @@ spec:
       name: nginx
       port:
         number: 80
-  ingressClassName: tailscale
   tls:
     - hosts:
         - nginx
