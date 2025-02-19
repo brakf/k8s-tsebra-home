@@ -12,3 +12,6 @@ spec:
       targetPort: 8000
   selector:
     app: paperless
+  tls:
+    - hosts:
+        - paperless
