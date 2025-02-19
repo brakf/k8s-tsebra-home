@@ -1,27 +1,27 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  labels:
-    app: paperless-tika
-  name: paperless-tika
-  namespace: tsebra-home
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: paperless-tika
-  template:
-    metadata:
-      labels:
-        app: paperless-tika
-    spec:
-      containers:
-        - image: docker.io/apache/tika:latest
-          name: tika
-          ports:
-            - containerPort: 9998
-              protocol: TCP
-          env:
-            - name: JAVA_OPTS #https://github.com/corretto/corretto-21/issues/85
-              value: "-XX:UseSVE=0 -XX:+IgnoreUnrecognizedVMOptions"
-      restartPolicy: Always
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   labels:
+#     app: paperless-tika
+#   name: paperless-tika
+#   namespace: tsebra-home
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: paperless-tika
+#   template:
+#     metadata:
+#       labels:
+#         app: paperless-tika
+#     spec:
+#       containers:
+#         - image: docker.io/apache/tika:latest
+#           name: tika
+#           ports:
+#             - containerPort: 9998
+#               protocol: TCP
+#           env:
+#             - name: JAVA_OPTS #https://github.com/corretto/corretto-21/issues/85
+#               value: "-XX:UseSVE=0 -XX:+IgnoreUnrecognizedVMOptions"
+#       restartPolicy: Always
