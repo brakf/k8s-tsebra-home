@@ -23,5 +23,5 @@ spec:
               protocol: TCP
           env:
             - name: JAVA_OPTS #https://github.com/corretto/corretto-21/issues/85
-              value: "-XX:UseSVE=0"
+              value: "-XX:UseSVE=0 -XX:+IgnoreUnrecognizedVMOptions"
       restartPolicy: Always
