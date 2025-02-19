@@ -14,7 +14,7 @@ spec:
     targetRevision: 1.80.0
     helm:
       releaseName: tailscale-operator
-      values:
+      values: |
         oauth:
           clientId: ""
           clientSecret: ""
