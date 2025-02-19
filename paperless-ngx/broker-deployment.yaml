@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless-broker
+  namespace: tsebra-home
+  labels:
+    app: paperless-broker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless-broker
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      containers:
+        - image: docker.io/library/redis:7
+          name: broker
+          volumeMounts:
+            - mountPath: /data
+              name: redisdata
+          ports:
+            - containerPort: 6379
+              protocol: TCP
+      restartPolicy: Always
+      volumes:
+        - name: redisdata
+          persistentVolumeClaim:
+            claimName: paperless-redisdata

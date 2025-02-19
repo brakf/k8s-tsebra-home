@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: paperless-gotenberg
+  namespace: tsebra-home
+  labels:
+    app: paperless-gotenberg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless-gotenberg
+  template:
+    spec:
+      containers:
+        - args:
+            - gotenberg
+            - --chromium-disable-javascript=true
+            - --chromium-allow-list=file:///tmp/.*
+          image: docker.io/gotenberg/gotenberg:8.7
+          name: paperless-gotenberg
+          ports:
+            - containerPort: 3000
+              protocol: TCP
+      restartPolicy: Always

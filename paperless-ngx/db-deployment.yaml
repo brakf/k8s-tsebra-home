@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: paperless-db
+  name: paperless-db
+  namespace: tsebra-home
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless-db
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      containers:
+        - env:
+            - name: POSTGRES_DB
+              value: paperless
+            - name: POSTGRES_PASSWORD
+              value: paperless
+            - name: POSTGRES_USER
+              value: paperless
+          image: docker.io/library/postgres:16
+          name: db
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: pgdata
+          ports:
+            - containerPort: 5432
+              protocol: TCP
+      restartPolicy: Always
+      volumes:
+        - name: pgdata
+          persistentVolumeClaim:
+            claimName: pgdata

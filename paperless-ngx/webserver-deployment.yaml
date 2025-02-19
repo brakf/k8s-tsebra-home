@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: paperless
+  name: paperless
+  namespace: tsebra-home
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: paperless
+  strategy:
+    type: Recreate
+  template:
+    spec:
+      containers:
+        - env:
+            - name: COMPOSE_PROJECT_NAME
+              value: paperless
+            - name: PAPERLESS_DBHOST
+              value: db
+            - name: PAPERLESS_OAUTH_CALLBACK_BASE_URL
+              value: https://paperless.tailbe61a.ts.net
+            - name: PAPERLESS_OAUTH_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-outlook-oauth-credentials
+                  key: clientId
+            - name: PAPERLESS_OAUTH_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: paperless-outlook-oauth-credentials
+                  key: clientSecret
+            - name: PAPERLESS_OCR_LANGUAGE
+              value: deu
+            - name: PAPERLESS_REDIS
+              value: redis://paperless-broker:6379
+            - name: PAPERLESS_TIKA_ENABLED
+              value: "1"
+            - name: PAPERLESS_TIKA_ENDPOINT
+              value: http://paperless-tika:9998
+            - name: PAPERLESS_TIKA_GOTENBERG_ENDPOINT
+              value: http://paperless-gotenberg:3000
+            - name: PAPERLESS_TIME_ZONE
+              value: Europe/Berlin
+          image: ghcr.io/paperless-ngx/paperless-ngx:latest
+          name: paperless
+          ports:
+            - containerPort: 8000
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /usr/src/paperless/data
+              name: data
+            - mountPath: /usr/src/paperless/media
+              name: media
+            - mountPath: /usr/src/paperless/export
+              name: export
+            - mountPath: /usr/src/paperless/consume
+              name: consume
+      restartPolicy: Always
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: paperless-data
+        - name: media
+          persistentVolumeClaim:
+            claimName: paperless-media
+        - name: export
+          persistentVolumeClaim:
+            claimName: paperless-export
+        - name: consume
+          persistentVolumeClaim:
+            claimName: paperless-consume
