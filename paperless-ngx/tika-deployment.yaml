@@ -21,4 +21,6 @@ spec:
           ports:
             - containerPort: 9998
               protocol: TCP
+          environment: #https://github.com/corretto/corretto-21/issues/85
+            - JAVA_OPTS: "-XX:UseSVE=0"
       restartPolicy: Always
