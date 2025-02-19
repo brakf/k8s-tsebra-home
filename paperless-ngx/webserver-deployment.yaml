@@ -22,7 +22,7 @@ spec:
             - name: COMPOSE_PROJECT_NAME
               value: paperless
             - name: PAPERLESS_DBHOST
-              value: db
+              value: paperless-db
             - name: PAPERLESS_OAUTH_CALLBACK_BASE_URL
               value: https://paperless.tailbe61a.ts.net
             - name: PAPERLESS_OAUTH_CLIENT_ID
