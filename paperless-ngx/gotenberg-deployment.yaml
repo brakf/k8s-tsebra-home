@@ -11,6 +11,9 @@ spec:
     matchLabels:
       app: paperless-gotenberg
   template:
+    metadata:
+      labels:
+        app: paperless-gotenberg
     spec:
       containers:
         - args:

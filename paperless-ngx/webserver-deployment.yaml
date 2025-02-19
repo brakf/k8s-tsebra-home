@@ -13,6 +13,9 @@ spec:
   strategy:
     type: Recreate
   template:
+    metadata:
+      labels:
+        app: paperless
     spec:
       containers:
         - env:

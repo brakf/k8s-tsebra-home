@@ -13,6 +13,9 @@ spec:
   strategy:
     type: Recreate
   template:
+    metadata:
+      labels:
+        app: paperless-broker
     spec:
       containers:
         - image: docker.io/library/redis:7
