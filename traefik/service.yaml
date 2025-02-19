@@ -1,27 +1,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: traefik-dashboard-service
+  name: traefik
   namespace: tsebra-home
 
 spec:
   type: LoadBalancer
+  loadBalancerClass: tailscale
   ports:
     - port: 8080
       targetPort: dashboard
-  selector:
-    app: traefik
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: traefik-web-service
-  namespace: tsebra-home
-
-spec:
-  type: LoadBalancer
-  ports:
-    - targetPort: web
-      port: 80
+    - port: 80
+      targetPort: web
   selector:
     app: traefik
