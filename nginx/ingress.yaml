@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: nginx-ingress
 spec:
-  ingressClassName: traefik
+  ingressClassName: traefik-internal
   rules:
   - http:
       paths:
