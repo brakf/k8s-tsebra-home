@@ -19,6 +19,8 @@ spec:
     spec:
       containers:
         - env:
+            - name: PAPERLESS_PORT
+              value: "8000"
             - name: COMPOSE_PROJECT_NAME
               value: paperless
             - name: PAPERLESS_DBHOST
