@@ -14,7 +14,7 @@ spec:
         run: nfs
     spec:
       containers:
-        - image: erichough/nfs-server
+        - image: pedroetb/nfs-server
           name: nfs
           ports:
             - containerPort: 2049
