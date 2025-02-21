@@ -9,25 +9,9 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: home-assistant
-    repoURL: https://k8s-home-lab.github.io/helm-charts/
-    targetRevision: 14.0.1
-    helm:
-      releaseName: home-assistant
-      values: |
-        ingress:
-          main:
-            enabled: true
-            primary: true
-            ingressClassName: tailscale
-            hosts:
-              - host: home-assistant
-                paths:
-                  - path: /
-                  pathType: Prefix
-            tls:
-              - hosts:
-                  - home-assistant
+    path: home-assistant
+    repoURL: https://github.com/brakf/k8s-tsebra-home
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
