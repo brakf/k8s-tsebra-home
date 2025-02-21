@@ -20,7 +20,6 @@ spec:
       #   capabilities:
       #     add:
       #       - NET_ADMIN
-      serviceAccountName: home-assistant
       containers:
         - name: home-assistant
           image: ghcr.io/home-assistant/home-assistant:stable
