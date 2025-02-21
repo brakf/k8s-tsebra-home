@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-nginx
+  name: nfs
   namespace: tsebra-home
 spec:
   selector:
     matchLabels:
-      run: my-nginx
+      run: nfs
   replicas: 1
   template:
     metadata:
