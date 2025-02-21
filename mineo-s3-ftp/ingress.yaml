@@ -1,15 +1,28 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: mineo
+  name: mineo-webui
   namespace: tsebra-home
 spec:
   ingressClassName: tailscale
   defaultBackend:
     service:
-      name: mineo
+      name: mineo-webui
       port:
         number: 80
   tls:
     - hosts:
-        - mineo
+        - mineo-webui.tsebra.com
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mineo-api
+  namespace: tsebra-home
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: mineo-api
+      port:
+        number: 80
