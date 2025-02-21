@@ -9,6 +9,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: nginx
+    path: nfs
     repoURL: https://github.com/brakf/k8s-tsebra-home
     targetRevision: HEAD
