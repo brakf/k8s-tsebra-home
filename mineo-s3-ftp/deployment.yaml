@@ -1,0 +1,45 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: mineo
+  namespace: tsebra-home
+  labels:
+    app: mineo
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mineo
+  template:
+    metadata:
+      labels:
+        app: mineo
+    spec:
+      # securityContext:
+      #   capabilities:
+      #     add:
+      #       - NET_ADMIN
+      serviceAccountName: mineo
+      containers:
+        - name: mineo
+          image: minio/minio
+          ports:
+            - name: http
+              containerPort: 9001
+          env:
+            - name: MINIO_ACCESS_KEY
+              value: JVHPHHVZ5ALC4398ZHJQCD
+            - name: MINIO_SECRET_KEY
+              value: bUQnd7UFy6dG50JoJovNabzj*Szzm35LB^04fwZ
+            - name: MINIO_OPTS
+              value: --console-address=":9001" --ftp="address=:8021" --ftp="passive-port-range=30000-40000"
+            # - name: MINIO_DOMAIN
+            #   value: mineo.tsebra.com
+          volumeMounts:
+            - name: mineo-data
+              mountPath: /data
+      volumes:
+        - name: mineo-data
+          persistentVolumeClaim:
+            claimName: mineo-data
