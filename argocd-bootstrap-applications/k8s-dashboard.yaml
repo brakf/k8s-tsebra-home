@@ -51,11 +51,9 @@ spec:
   ingressClassName: tailscale
   defaultBackend:
     service:
-      name: kubernetes-dashboard
+      name: kubernetes-dashboard-custom
       port:
         number: 80
   tls:
     - hosts:
         - kubernetes-dashboard
-  selector:
-    name: kubernetes-dashboard-custom
