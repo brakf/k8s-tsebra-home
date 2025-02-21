@@ -26,3 +26,36 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=false
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-dashboard-custom
+  namespace: tsebra-home
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8000
+      protocol: TCP
+      name: web
+  selector:
+    app: kubernetes-dashboard-web
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubernetes-dashboard
+  namespace: tsebra-home
+spec:
+  ingressClassName: tailscale
+  defaultBackend:
+    service:
+      name: kubernetes-dashboard
+      port:
+        number: 80
+  tls:
+    - hosts:
+        - kubernetes-dashboard
+  selector:
+    name: kubernetes-dashboard-custom
