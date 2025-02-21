@@ -25,7 +25,7 @@ spec:
     service:
       name: traefik-dashboard
       port:
-        number: 8080
+        number: 80
   tls:
     - hosts:
         - traefik-dashboard
