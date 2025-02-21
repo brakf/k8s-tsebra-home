@@ -25,6 +25,8 @@ spec:
               value: paperless
             - name: PAPERLESS_DBHOST
               value: paperless-db
+            - name: PAPERLESS_URL
+              value: https://paperless.tailbe61a.ts.net
             - name: PAPERLESS_OAUTH_CALLBACK_BASE_URL
               value: https://paperless.tailbe61a.ts.net
             - name: PAPERLESS_OAUTH_CLIENT_ID
