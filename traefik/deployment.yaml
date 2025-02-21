@@ -23,7 +23,7 @@ spec:
           args:
             - --api.insecure
             - --providers.kubernetesingress
-            - --certificatesresolvers.myresolver.tailscale=true
+            # - --certificatesresolvers.myresolver.tailscale=true
             - --providers.kubernetesingress.ingressclass=traefik-internal
           ports:
             - name: web
