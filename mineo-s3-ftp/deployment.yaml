@@ -20,7 +20,6 @@ spec:
       #   capabilities:
       #     add:
       #       - NET_ADMIN
-      serviceAccountName: mineo
       containers:
         - name: mineo
           image: minio/minio
