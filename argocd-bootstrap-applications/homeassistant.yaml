@@ -14,6 +14,20 @@ spec:
     targetRevision: 14.0.1
     helm:
       releaseName: home-assistant
+      values: |
+        ingress:
+          main:
+            enabled: true
+            primary: true
+            ingressClassName: tailscale
+            hosts:
+              - host: home-assistant
+                paths:
+                  - path: /
+                  pathType: Prefix
+            tls:
+              - hosts:
+                  - home-assistant
   syncPolicy:
     automated:
       prune: true
