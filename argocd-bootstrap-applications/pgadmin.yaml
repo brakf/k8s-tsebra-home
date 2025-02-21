@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pgadmin
+  namespace: argocd
+spec:
+  destination:
+    namespace: tsebra-home
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: pgadmin4
+    repoURL: https://helm.runix.net
+    targetRevision: 1.2.20
+    helm:
+      releaseName: pgadmin
+      values: |
+        ingress:
+          enabled: true
+          ingressClassName: tailscale
+          hosts:
+            - host: pgadmin
+              paths:
+                - path: /
+                  pathType: Prefix
+          tls:
+            - hosts:
+                - pgadmin
+
+        env:
+          email: admin@example.com
+          password: admin123secure
+
+        service:
+          type: ClusterIP
+          port: 80
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
