@@ -7,9 +7,10 @@ metadata:
     app: paperless
 spec:
   type: LoadBalancer
+  loadBalancerClass: tailscale
   ports:
     - name: http
-      port: 81
+      port: 80
       targetPort: 8000
       protocol: TCP
   selector:
