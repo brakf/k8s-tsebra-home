@@ -11,7 +11,7 @@ spec:
   sources:
     - chart: hashicorp/vault
       repoURL: https://helm.releases.hashicorp.com
-      targetRevision: v1.8.0
+      targetRevision: v0.29.1
       helm:
         values: |
           preUpgradeChecker:
