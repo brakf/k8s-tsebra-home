@@ -26,7 +26,7 @@ metadata:
   name: longhorn-ingress
   namespace: longhorn-system
   annotations:
-    traefik.ingress.kubernetes.io/rewrite-target: /longhorn
+    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
     traefik.ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
