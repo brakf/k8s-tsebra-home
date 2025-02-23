@@ -25,14 +25,16 @@ kind: Ingress
 metadata:
   name: longhorn-ingress
   namespace: longhorn-system
+  annotations:
+    traefik.ingress.kubernetes.io/rewrite-target: /longhorn
 spec:
   rules:
-  - http:
-      paths:
-      - pathType: Prefix
-        path: "/longhorn"
-        backend:
-          service:
-            name: longhorn-frontend
-            port:
-              number: 80
+    - http:
+        paths:
+          - pathType: Prefix
+            path: "/longhorn"
+            backend:
+              service:
+                name: longhorn-frontend
+                port:
+                  number: 80
