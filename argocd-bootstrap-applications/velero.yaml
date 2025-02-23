@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pgadmin
+  namespace: argocd
+spec:
+  destination:
+    namespace: tsebra-home
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    chart: velero
+    repoURL: https://vmware-tanzu.github.io/helm-charts
+    targetRevision: 1.15.2
+    helm:
+      releaseName: velero
+      values: |
+        configuration:
+          backupStorageLocation:
+            - name: nas
+              bucket: s3://nas-backups
+            provider
+          volumeSnapshotLocation:
+            
+                
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false
