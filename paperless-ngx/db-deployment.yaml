@@ -30,7 +30,7 @@ spec:
           image: docker.io/library/postgres:16
           name: db
           volumeMounts:
-            - mountPath: /data/pgdata
+            - mountPath: /data
               name: pgdata
           ports:
             - containerPort: 5432
