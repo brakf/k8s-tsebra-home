@@ -9,9 +9,16 @@ spec:
       - CreateNamespace=true
   project: default
   sources:
-    - chart: hashicorp/vault
+    - chart: vault-helm
       repoURL: https://helm.releases.hashicorp.com
       targetRevision: v0.29.1
+      helm:
+        values: |
+          preUpgradeChecker:
+            jobEnabled: false
+    - chart: vault-secrets-operator
+      repoURL: https://helm.releases.hashicorp.com
+      targetRevision: v0.9.1
       helm:
         values: |
           preUpgradeChecker:
