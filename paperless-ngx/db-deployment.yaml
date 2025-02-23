@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   labels:
     app: paperless-db
@@ -25,10 +25,12 @@ spec:
               value: paperless
             - name: POSTGRES_USER
               value: paperless
+            - name: PGDATA
+              value: /data/pgdata
           image: docker.io/library/postgres:16
           name: db
           volumeMounts:
-            - mountPath: /var/lib/postgresql/data
+            - mountPath: /data/pgdata
               name: pgdata
           ports:
             - containerPort: 5432
