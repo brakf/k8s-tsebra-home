@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik-system
+  namespace: argocd
+spec:
+  destination:
+    namespace: traefik-system
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: traefik-system
+    repoURL: https://github.com/brakf/k8s-tsebra-home
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

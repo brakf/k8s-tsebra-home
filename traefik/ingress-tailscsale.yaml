@@ -28,4 +28,4 @@ spec:
         number: 80
   tls:
     - hosts:
-        - traefik-dashboard
+        - home-traefik-dashboard

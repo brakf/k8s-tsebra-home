@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whoami
+  labels:
+    app: whoami
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: whoami
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: whoami
+    spec:
+      containers:
+      - image: traefik/whoami
+        name: whoami
+        ports:
+        - name: http
+          containerPort: 80
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whoami
+  labels:
+    app: whoami
+spec:
+  selector:
+    app: whoami
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: http
+    name: http
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: whoami
+spec:
+  entryPoints:
+  - http
+  routes:
+  - kind: Rule
+    match: Host(`whoami.tsebra-home.de`)
+    services:
+    - name: whoami
+      port: 80
+  # tls:
+  #   certResolver: default
