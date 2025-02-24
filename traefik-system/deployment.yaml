@@ -69,16 +69,15 @@ spec:
                   name: traefik-dns-cloudflare-secrets
                   key: CF_DNS_API_TOKEN
           volumeMounts:
-            # - mountPath: /acme
-            #   name: acme
+            - mountPath: /acme
+              name: acme
             - mountPath: /etc/traefik/traefik.yml
               name: config-static
               subPath: traefik.yml
-
       volumes:
-        # - name: acme
-        #   persistentVolumeClaim:
-        #     claimName: nfs-traefik
+        - name: acme
+          persistentVolumeClaim:
+            claimName: traefik-acme-store
         - name: config-static
           configMap:
             name: traefik-static

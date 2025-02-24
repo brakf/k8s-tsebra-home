@@ -35,7 +35,9 @@ data:
     log:
       level: INFO
     certificatesResolvers:
+
       default:
         acme:
+          storage: /acme/acme.json
           dnsChallenge:
             provider: cloudflare
