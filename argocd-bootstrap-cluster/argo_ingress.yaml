@@ -42,3 +42,20 @@ spec:
           port: 80
   # tls:
   #   secretName: argocd-tls
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  selector:
+    app: argocd
+  ports:
+    - port: 80
+      protocol: TCP
+      name: http
+    - port: 443
+      protocol: TCP
+      name: https
+  type: LoadBalancer
