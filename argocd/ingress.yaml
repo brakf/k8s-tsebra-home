@@ -1,23 +1,42 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: argocd
+#   namespace: argocd
+#   annotations:
+#     # traefik.ingress.kubernetes.io/router.entrypoints: web
+#     # traefik.ingress.kubernetes.io/router.priority: "42"
+#     # traefik.ingress.kubernetes.io/router.middlewares: apps-middleware1@kubernetescrd
+#     # traefik.ingress.kubernetes.io/router.tls: "true"
+#     # traefik.ingress.kubernetes.io/router.tls.options: apps-opt@kubernetescrd
+# spec:
+#   entryPoints:
+#     - web
+#   rules:
+#     - host: argocd.tsebra-home.de
+#       http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: argocd-server
+#                 port:
+#                   number: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
   name: argocd
   namespace: argocd
-  annotations:
-    # traefik.ingress.kubernetes.io/router.entrypoints: web
-    # traefik.ingress.kubernetes.io/router.priority: "42"
-    # traefik.ingress.kubernetes.io/router.middlewares: apps-middleware1@kubernetescrd
-    # traefik.ingress.kubernetes.io/router.tls: "true"
-    # traefik.ingress.kubernetes.io/router.tls.options: apps-opt@kubernetescrd
 spec:
-  rules:
-    - host: argocd.tsebra-home.de
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: argocd-server
-                port:
-                  number: 80
+  entryPoints:
+    - web
+  routes:
+    # - match: Host(`argocd.tsebra-home.de`)
+    - kind: Rule
+      services:
+        - name: argocd-server
+          port: 80
+  tls:
+    secretName: argocd-tls
