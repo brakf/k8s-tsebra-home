@@ -56,9 +56,9 @@ spec:
     - port: 8888
       protocol: TCP
       name: http
-      targetPort: 80
+      targetPort: 8080
     - port: 44300
       protocol: TCP
       name: https
-      targetPort: 443
+      targetPort: 8083
   type: LoadBalancer
