@@ -13,17 +13,17 @@ data:
     entryPoints:
       http:
         address: :80
-        # http:
-        #   redirections:
-        #     entryPoint:
-        #       to: https
-        #       scheme: https
-        #       permanent: false
-        #       priority: 1
-      # https:
-      #   address: :443
-      #   http:
-      #     tls: {}
+        http:
+          redirections:
+            entryPoint:
+              to: https
+              scheme: https
+              permanent: false
+              priority: 1
+      https:
+        address: :443
+        http:
+          tls: {}
     providers:
       kubernetesCRD: {}
     #  ingressClass: traefik-crd
@@ -34,8 +34,8 @@ data:
       entryPoint: http
     log:
       level: INFO
-    # certificatesResolvers:
-    #   default:
-    #     acme:
-    #       dnsChallenge:
-    #         provider: cloudflare
+    certificatesResolvers:
+      default:
+        acme:
+          dnsChallenge:
+            provider: cloudflare
