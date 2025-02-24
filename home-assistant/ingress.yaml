@@ -1,15 +1,14 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
   name: home-assistant
   namespace: tsebra-home
 spec:
-  ingressClassName: tailscale
-  defaultBackend:
-    service:
-      name: home-assistant
-      port:
-        number: 80
-  tls:
-    - hosts:
-        - home-assistant
+  entryPoints:
+    - http
+  routes:
+    - kind: Rule
+      match: Host(`home-assistant.tsebra-home.de`)
+      services:
+        - name: home-assistant
+          port: 80
