@@ -63,16 +63,18 @@ spec:
           #     drop:
           #       - ALL
           env:
-            - name: CF_DNS_API_TOKEN_FILE
-              value: /mnt/cloudflare-token
+            - name: CF_DNS_API_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: traefik-dns-cloudflare-secrets
+                  key: CF_DNS_API_TOKEN
           volumeMounts:
             # - mountPath: /acme
             #   name: acme
             - mountPath: /etc/traefik/traefik.yml
               name: config-static
               subPath: traefik.yml
-            - name: cloudflare-token
-              mountPath: /mnt/cloudflare-token
+
       volumes:
         # - name: acme
         #   persistentVolumeClaim:
@@ -80,6 +82,3 @@ spec:
         - name: config-static
           configMap:
             name: traefik-static
-        - name: cloudflare-token
-          secret:
-            secretName: traefik-dns-cloudflare-secrets
