@@ -26,6 +26,7 @@ data:
       #     tls: {}
     providers:
       kubernetesCRD: {}
+      ingressClass: traefik-crd
     api:
       dashboard: true
       insecure: true
