@@ -31,15 +31,15 @@ metadata:
   namespace: argocd
 spec:
   entryPoints:
-    - http
+    - https
   routes:
     - kind: Rule
       match: Host(`argocd.tsebra-home.de`)
       services:
         - name: argocd-server
           port: 80
-  # tls:
-  #   certResolver: default
+  tls:
+    certResolver: default
 ---
 apiVersion: v1
 kind: Service
