@@ -54,7 +54,6 @@ spec:
           volumeMounts:
             - name: cloudflare-token
               mountPath: /mnt/cloudflare-token
-              subPath: CF_DNS_API_TOKEN
       volumes:
         - name: cloudflare-token
           secret:
