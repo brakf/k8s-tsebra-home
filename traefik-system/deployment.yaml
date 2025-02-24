@@ -19,7 +19,7 @@ spec:
       labels:
         app: traefik
     spec:
-      serviceAccountName: traefik
+      serviceAccountName: traefik-account
       containers:
         - image: traefik:3.3
           imagePullPolicy: IfNotPresent
