@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: traefik-system
+  name: traefik-test
   namespace: argocd
 spec:
   destination:
