@@ -24,9 +24,38 @@ spec:
             - --api.insecure
             - --providers.kubernetesingress
             # - --certificatesresolvers.myresolver.tailscale=true
-            - --providers.kubernetesingress.ingressclass=traefik-internal
+            # - --providers.kubernetesingress.ingressclass=traefik-internal
+            - --providers.kubernetesingress.ingressendpoint.publishedservice=tsebra-home/traefik
+            - --certificatesresolvers.cloudflare.acme.email=fabian@tse-brakowski.de
+            - --certificatesresolvers.cloudflare.acme.storage=/acme.json
+            - --certificatesresolvers.cloudflare.acme.dnsChallenge.provider=cloudflare
+            - --certificatesresolvers.cloudflare.acme.dnsChallenge.cf_dns_api_token_file=/mnt/cloudflare-token
+            - --global.checknewversion
+            - --global.sendanonymoususage
+            - --entrypoints.metrics.address=:9100/tcp
+            - --entrypoints.traefik.address=:9000/tcp
+            - --entrypoints.web.address=:8000/tcp
+            - --entrypoints.websecure.address=:8443/tcp
+            - --api.dashboard=true
+            # - --ping=true
+            # - --metrics.prometheus=true
+            # - --metrics.prometheus.entrypoint=metrics
+            - --providers.kubernetescrd
+            - --providers.kubernetesingress
+
+            - --entrypoints.websecure.http.tls=true
           ports:
             - name: web
-              containerPort: 80
+              containerPort: 8000
             - name: dashboard
               containerPort: 8080
+            - name: websecure
+              containerPort: 8443
+          volumeMounts:
+            - name: cloudflare-token
+              mountPath: /mnt/cloudflare-token
+              subPath: CF_DNS_API_TOKEN
+      volumes:
+        - name: cloudflare-token
+          secret:
+            secretName: traefik-dns-cloudflare-secrets
