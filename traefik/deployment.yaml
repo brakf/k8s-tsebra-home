@@ -24,13 +24,13 @@ spec:
             - --api.insecure
             - --providers.kubernetesingress
             # - --certificatesresolvers.myresolver.tailscale=true
-            # - --providers.kubernetesingress.ingressclass=traefik-internal
-            - --providers.kubernetesingress.ingressendpoint.publishedservice=tsebra-home/traefik
-            - --certificatesresolvers.cloudflare.acme.email=fabian@tse-brakowski.de
-            - --certificatesresolvers.cloudflare.acme.storage=/acme.json
-            - --certificatesresolvers.cloudflare.acme.dnsChallenge.provider=cloudflare
+            - --providers.kubernetesingress.ingressclass=traefik-internal
+            # - --providers.kubernetesingress.ingressendpoint.publishedservice=tsebra-home/traefik
+            # - --certificatesresolvers.cloudflare.acme.email=fabian@tse-brakowski.de
+            # - --certificatesresolvers.cloudflare.acme.storage=/acme.json
+            # - --certificatesresolvers.cloudflare.acme.dnsChallenge.provider=cloudflare
             - --global.checknewversion
-            - --global.sendanonymoususage
+            # - --global.sendanonymoususage
             - --entrypoints.metrics.address=:9100/tcp
             - --entrypoints.traefik.address=:9000/tcp
             - --entrypoints.web.address=:8000/tcp
@@ -41,7 +41,6 @@ spec:
             # - --metrics.prometheus.entrypoint=metrics
             - --providers.kubernetescrd
             - --providers.kubernetesingress
-
             - --entrypoints.websecure.http.tls=true
           ports:
             - name: web
