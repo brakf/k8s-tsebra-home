@@ -11,10 +11,10 @@ metadata:
     traefik.ingress.kubernetes.io/router.tls.options: apps-opt@kubernetescrd
 spec:
   rules:
-    - http:
+    - host: argocd.tsebra-home.de
+      http:
         paths:
-          - host: "argocd.tsebra-home.de"
-            path: /
+          - path: /
             pathType: Prefix
             backend:
               service:
