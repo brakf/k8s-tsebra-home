@@ -35,6 +35,7 @@ spec:
   routes:
     # - match: Host(`argocd.tsebra-home.de`)
     - kind: Rule
+      match: Host(`*`)
       services:
         - name: argocd-server
           port: 80
