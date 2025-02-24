@@ -17,11 +17,11 @@ spec:
         app: whoami
     spec:
       containers:
-      - image: traefik/whoami
-        name: whoami
-        ports:
-        - name: http
-          containerPort: 80
+        - image: traefik/whoami
+          name: whoami
+          ports:
+            - name: http
+              containerPort: 80
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -34,10 +34,10 @@ spec:
   selector:
     app: whoami
   ports:
-  - port: 80
-    protocol: TCP
-    targetPort: http
-    name: http
+    - port: 80
+      protocol: TCP
+      targetPort: http
+      name: http
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -45,12 +45,12 @@ metadata:
   name: whoami
 spec:
   entryPoints:
-  - http
+    - https
   routes:
-  - kind: Rule
-    match: Host(`whoami.tsebra-home.de`)
-    services:
-    - name: whoami
-      port: 80
-  # tls:
-  #   certResolver: default
+    - kind: Rule
+      match: Host(`whoami.tsebra-home.de`)
+      services:
+        - name: whoami
+          port: 80
+  tls:
+    certResolver: default
