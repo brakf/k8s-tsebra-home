@@ -29,8 +29,9 @@ kind: IngressRoute
 metadata:
   name: argocd
   namespace: argocd
+  annotations:
+    traefik.providers.kubernetesCRD.ingressClass: traefik-crd
 spec:
-  ingressClass: traefik-crd
   entryPoints:
     - http
   routes:
