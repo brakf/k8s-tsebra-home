@@ -41,8 +41,8 @@ spec:
       services:
         - name: argocd-server
           port: 80
-  # tls:
-  #   secretName: argocd-tls
+  tls:
+    certResolver: default
 ---
 apiVersion: v1
 kind: Service
