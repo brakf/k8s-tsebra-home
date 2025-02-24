@@ -29,7 +29,6 @@ spec:
             - --certificatesresolvers.cloudflare.acme.email=fabian@tse-brakowski.de
             - --certificatesresolvers.cloudflare.acme.storage=/acme.json
             - --certificatesresolvers.cloudflare.acme.dnsChallenge.provider=cloudflare
-            - --certificatesresolvers.cloudflare.acme.dnsChallenge.cf_dns_api_token_file=/mnt/cloudflare-token
             - --global.checknewversion
             - --global.sendanonymoususage
             - --entrypoints.metrics.address=:9100/tcp
@@ -54,6 +53,9 @@ spec:
           volumeMounts:
             - name: cloudflare-token
               mountPath: /mnt/cloudflare-token
+          env:
+            - name: CF_DNS_API_TOKEN_FILE
+              value: /mnt/cloudflare-token
       volumes:
         - name: cloudflare-token
           secret:
