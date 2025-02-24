@@ -26,3 +26,34 @@ spec:
           ports:
             - name: http
               containerPort: 8123
+          envFrom:
+            - configMapRef:
+                name: home-assistant-config
+          livenessProbe:
+          tcpSocket:
+            port: 8123
+          initialDelaySeconds: 0
+          failureThreshold: 3
+          timeoutSeconds: 1
+          periodSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: 8123
+            initialDelaySeconds: 0
+            failureThreshold: 3
+            timeoutSeconds: 1
+            periodSeconds: 10
+          startupProbe:
+            tcpSocket:
+              port: 8123
+            initialDelaySeconds: 0
+            failureThreshold: 30
+            timeoutSeconds: 1
+            periodSeconds: 5
+          volumeMounts:
+            - name: ha-config-root
+              mountPath: /config
+      volumes:
+        - name: ha-config-root
+          persistentVolumeClaim:
+            claimName: home-assistant-config-root
