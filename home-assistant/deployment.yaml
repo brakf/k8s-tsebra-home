@@ -26,9 +26,6 @@ spec:
           ports:
             - name: http
               containerPort: 8123
-          envFrom:
-            - configMapRef:
-                name: home-assistant-config
           livenessProbe:
           tcpSocket:
             port: 8123
@@ -53,7 +50,12 @@ spec:
           volumeMounts:
             - name: ha-config-root
               mountPath: /config
+            - name: initial_configuration
+              mountPath: /config/configuration.yaml
       volumes:
         - name: ha-config-root
           persistentVolumeClaim:
             claimName: home-assistant-config-root
+        - name: initial_configuration
+          configMap:
+            name: home-assistant-config

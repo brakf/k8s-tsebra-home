@@ -6,5 +6,8 @@ metadata:
   labels:
     app: home-assistant
 data:
-  TZ: "Europe/Berlin"
-  timezone: "Europe/Berlin"
+  configuration.yaml: |
+    http:
+      use_x_forwarded_for: true
+      trusted_proxies:
+        - 192.168.178.66
