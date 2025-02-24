@@ -45,23 +45,12 @@ spec:
           ports:
             - name: http
               containerPort: 80
-            # - name: https
-            #   containerPort: 443
+            - name: https
+              containerPort: 443
             - name: dashboard
               containerPort: 9000
-          # resources:
-          #   requests:
-          #     memory: 50Mi
-          #     cpu: 100m
-          #   limits:
-          #     memory: 50Mi
-          # cpu: 500m
-          # securityContext:
-          #   capabilities:
-          #     add:
-          #       - NET_BIND_SERVICE
-          #     drop:
-          #       - ALL
+            - name: nfs
+              containerPort: 2049
           env:
             - name: CF_DNS_API_TOKEN
               valueFrom:

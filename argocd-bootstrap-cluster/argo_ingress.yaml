@@ -29,13 +29,10 @@ kind: IngressRoute
 metadata:
   name: argocd
   namespace: argocd
-  annotations:
-    traefik.providers.kubernetesCRD.ingressClass: traefik-crd
 spec:
   entryPoints:
     - http
   routes:
-    # - match: Host(`argocd.tsebra-home.de`)
     - kind: Rule
       match: Host(`argocd.tsebra-home.de`)
       services:

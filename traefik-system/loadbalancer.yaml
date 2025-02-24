@@ -17,4 +17,7 @@ spec:
     - port: 9000
       protocol: TCP
       name: dashboard
+    - port: 2049
+      protocol: TCP
+      name: nfs
   type: LoadBalancer
