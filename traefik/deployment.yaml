@@ -47,7 +47,7 @@ spec:
             - name: web
               containerPort: 8000
             - name: dashboard
-              containerPort: 8080
+              containerPort: 9000
             - name: websecure
               containerPort: 8443
           volumeMounts:
