@@ -80,3 +80,6 @@ spec:
         - name: config-static
           configMap:
             name: traefik-static
+        - name: cloudflare-token
+          secret:
+            secretName: traefik-dns-cloudflare-secrets
