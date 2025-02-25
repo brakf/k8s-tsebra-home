@@ -20,11 +20,14 @@ spec:
             - containerPort: 2049
           env:
             - name: NFS_EXPORT_0
-              value: "/normal-scans"
+              value: "/nfs/normal-scans"
             - name: NFS_EXPORT_1
-              value: "/paperless-scans"
+              value: "/nfs/paperless-scans"
             - name: NFS_EXPORT_2
-              value: "/nas-outbound"
+              value: "/nfs/nas-outbound"
+          volumeMounts:
+            - name: data
+              mountPath: /nfs
       volumes:
         - name: data
           persistentVolumeClaim:
