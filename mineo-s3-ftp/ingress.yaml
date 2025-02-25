@@ -30,5 +30,6 @@ spec:
     - ftp
   routes:
     - services:
-        - name: mineo-ftp
+        - match: HostSNI(`*`)
+          name: mineo-ftp
           port: 8021

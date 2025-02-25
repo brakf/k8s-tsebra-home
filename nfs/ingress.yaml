@@ -8,5 +8,6 @@ spec:
     - nfs
   routes:
     - services:
-        - name: nfs
+        - match: HostSNI(`*`)
+          name: nfs
           port: 2049
