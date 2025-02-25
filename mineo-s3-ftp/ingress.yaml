@@ -29,7 +29,7 @@ spec:
   entryPoints:
     - ftp
   routes:
-    - services:
-        - match: HostSNI(`*`)
-          name: mineo-ftp
+    - match: Host(`*`)
+      services:
+        - name: mineo-ftp
           port: 8021

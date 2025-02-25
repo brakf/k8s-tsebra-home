@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - nfs
   routes:
-    - services:
-        - match: HostSNI(`*`)
-          name: nfs
+    - match: HostSNI(`*`)
+      services:
+        - name: nfs
           port: 2049
