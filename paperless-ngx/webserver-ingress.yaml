@@ -12,3 +12,5 @@ spec:
       services:
         - name: paperless
           port: 80
+  tls:
+    certResolver: default

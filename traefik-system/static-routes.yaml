@@ -1,0 +1,29 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nas-route
+  namespace: traefik-system
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`nas.tsebra-home.de`)
+      kind: Rule
+      services:
+        - name: nas-service
+          loadBalancer:
+            servers:
+              - url: "http://nas.fritz.box:5000"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nas-service
+  namespace: traefik-system
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+  type: ExternalName
+  externalName: nas.fritz.box
