@@ -53,6 +53,8 @@ spec:
               containerPort: 2049
             - name: ftp
               containerPort: 21
+            - name: smb
+              containerPort: 445
           env:
             - name: CF_DNS_API_TOKEN
               valueFrom:

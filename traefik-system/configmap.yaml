@@ -28,6 +28,8 @@ data:
         address: :2049
       ftp:
         address: :21
+      smb:
+        address: :445
     providers:
       kubernetesCRD: {}
     #  ingressClass: traefik-crd

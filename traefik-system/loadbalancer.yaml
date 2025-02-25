@@ -20,4 +20,7 @@ spec:
     - port: 2049
       protocol: TCP
       name: nfs
+    - port: 445
+      protocol: TCP
+      name: smb
   type: LoadBalancer

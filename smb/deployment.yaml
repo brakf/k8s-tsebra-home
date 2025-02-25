@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smb
+  namespace: tsebra-home
+spec:
+  selector:
+    matchLabels:
+      app: smb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: smb
+    spec:
+      containers:
+        - image: dperson/samba
+          name: smb
+          ports:
+            # - containerPort: 139
+            - containerPort: 445
+          env:
+            - name: SHARE
+              value: "test;/mnt/test"
+          volumeMounts:
+            - name: data
+              mountPath: /mnt
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: smb-data
