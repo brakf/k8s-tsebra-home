@@ -97,7 +97,7 @@ spec:
     - https
   routes:
     - kind: Rule
-      match: Host(`fritz.box`)
+      match: Host(`fritz-box.tsebra-home.de`)
       services:
         - name: fritz-box-service
           port: 80
