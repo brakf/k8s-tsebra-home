@@ -42,6 +42,7 @@ spec:
           volumeMounts:
             - name: mineo-data
               mountPath: /data
+          command: ["/bin/sh", "-c", "minio server /data --console-address \":9002\" --ftp \"address=:8021\" --ftp \"passive-port-range=30000-40000\""]
       volumes:
         - name: mineo-data
           persistentVolumeClaim:
