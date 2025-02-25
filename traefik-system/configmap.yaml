@@ -26,7 +26,8 @@ data:
           tls: {}
       nfs:
         address: :2049
-          
+      traefik:
+        address: :9000
     providers:
       kubernetesCRD: {}
     #  ingressClass: traefik-crd
