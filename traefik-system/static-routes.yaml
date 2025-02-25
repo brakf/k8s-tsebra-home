@@ -27,3 +27,79 @@
 # #       targetPort: 5000
 # #   type: ExternalName
 # #   externalName: nas.fritz.box
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: traefik-wol-nas
+  namespace: traefik-system
+spec:
+  plugin:
+    traefik-wol:
+      HealthCheck: http://192.168.178.94:5000
+      IpAddress: 192.168.178.94
+      MacAddress: "90:09:D0:36:34:BD"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nas-service
+  namespace: traefik-system
+spec:
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+  type: ExternalName
+  externalName: nas.fritz.box
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fritz-box-service
+  namespace: traefik-system
+spec:
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ExternalName
+  externalName: fritz.box
+---
+# All resources definition must be declared
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nas
+  namespace: tsebra-home
+spec:
+  entryPoints:
+    - https
+  routes:
+    - kind: Rule
+      match: Host(`nas.tsebra-home.de`)
+      middlewares:
+        - name: traefik-wol-nas
+          namespace: traefik-system
+      priority: 10
+      services:
+        - name: nas-service
+          port: 5000
+  tls:
+    certResolver: default
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: fritz-box
+  namespace: tsebra-home
+spec:
+  entryPoints:
+    - https
+  routes:
+    - kind: Rule
+      match: Host(`fritz.box`)
+      services:
+        - name: fritz-box-service
+          port: 80
+  tls:
+    certResolver: default

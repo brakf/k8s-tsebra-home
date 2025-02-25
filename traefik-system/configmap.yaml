@@ -43,3 +43,8 @@ data:
           storage: /acme/acme.json
           dnsChallenge:
             provider: cloudflare
+    experimental:
+      plugins:
+        traefik-wol:
+          moduleName: "github.com/MarkusJx/traefik-wol"
+          version: "v0.1.1"
