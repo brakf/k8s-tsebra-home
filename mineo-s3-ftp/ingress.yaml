@@ -21,15 +21,14 @@ spec:
     certResolver: default
 ---
 apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+kind: IngressRouteTCP
 metadata:
   name: mineo-ftp
   namespace: tsebra-home
 spec:
   entryPoints:
     - ftp
-  routes:
-    - kind: Rule
-      services:
-        - name: mineo-ftp
-          port: 8021
+  defaultRoute:
+    service:
+      name: mineo-ftp
+      port: 8021
