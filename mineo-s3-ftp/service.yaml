@@ -41,7 +41,7 @@ metadata:
     run: mineo
 spec:
   type: LoadBalancer
-  loadBalancerClass: tailscale #can't use ingress for ftp
+  # loadBalancerClass: tailscale #can't use ingress for ftp
   ports:
     - port: 21
       targetPort: 8021

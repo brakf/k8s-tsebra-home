@@ -26,13 +26,11 @@ data:
           tls: {}
       nfs:
         address: :2049
-      traefik:
-        address: :8080
     providers:
       kubernetesCRD: {}
     #  ingressClass: traefik-crd
     api:
-      dashboard: true
+      # dashboard: true
       insecure: true
     ping:
       entryPoint: http

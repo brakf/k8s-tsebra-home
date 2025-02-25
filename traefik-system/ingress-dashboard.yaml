@@ -20,8 +20,8 @@ metadata:
   name: traefik-dashboard
   namespace: traefik-system
 spec:
-  entryPoints:
-    - traefik
+  # entryPoints:
+  #   - traefik
   routes:
     - kind: Rule
       match: Host(`traefik-dashboard.tsebra-home.de`)
