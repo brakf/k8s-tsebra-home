@@ -47,8 +47,8 @@ spec:
               containerPort: 80
             - name: https
               containerPort: 443
-            - name: dashboard
-              containerPort: 9000
+            - name: traefik
+              containerPort: 8080
             - name: nfs
               containerPort: 2049
           env:

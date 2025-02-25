@@ -27,7 +27,7 @@ data:
       nfs:
         address: :2049
       traefik:
-        address: :9000
+        address: :8080
     providers:
       kubernetesCRD: {}
     #  ingressClass: traefik-crd

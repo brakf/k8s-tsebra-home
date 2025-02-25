@@ -8,9 +8,9 @@ spec:
   selector:
     app: traefik
   ports:
-    - port: 9000
+    - port: 8080
       protocol: TCP
-      targetPort: 9000
+      targetPort: 8080
       name: dashboard
 
 ---
@@ -27,6 +27,6 @@ spec:
       match: Host(`traefik-dashboard.tsebra-home.de`)
       services:
         - name: traefik-dashboard
-          port: 9000
+          port: 8080
   tls:
     certResolver: default
