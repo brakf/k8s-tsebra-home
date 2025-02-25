@@ -6,7 +6,7 @@ metadata:
 spec:
   entryPoints:
     - nfs
-  defaultRoute:
-    service:
-      name: nfs
-      port: 2049
+  routes:
+    - services:
+        name: nfs
+        port: 2049

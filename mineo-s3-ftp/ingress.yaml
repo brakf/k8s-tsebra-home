@@ -28,7 +28,7 @@ metadata:
 spec:
   entryPoints:
     - ftp
-  defaultRoute:
-    service:
+  routes:
+    - services:
       name: mineo-ftp
       port: 8021
