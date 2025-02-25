@@ -31,7 +31,7 @@ apiVersion: traefik.io/v1alpha1
 kind: Middleware
 metadata:
   name: traefik-wol-nas
-  namespace: traefik-system
+  namespace: tsebra-home
 spec:
   plugin:
     traefik-wol:
@@ -80,7 +80,6 @@ spec:
       middlewares:
         - name: traefik-wol-nas
           namespace: traefik-system
-      priority: 10
       services:
         - name: nas-service
           port: 5000

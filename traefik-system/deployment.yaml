@@ -51,6 +51,8 @@ spec:
               containerPort: 8080
             - name: nfs
               containerPort: 2049
+            - name: ftp
+              containerPort: 21
           env:
             - name: CF_DNS_API_TOKEN
               valueFrom:

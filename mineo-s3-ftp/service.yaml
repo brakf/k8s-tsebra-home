@@ -8,7 +8,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 80
+    - port: 9002
       targetPort: 9002
       protocol: TCP
       name: http-webui
@@ -25,7 +25,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 80
+    - port: 9000
       targetPort: 9000
       protocol: TCP
       name: http-api
@@ -43,7 +43,7 @@ spec:
   type: LoadBalancer
   # loadBalancerClass: tailscale #can't use ingress for ftp
   ports:
-    - port: 21
+    - port: 8021
       targetPort: 8021
       protocol: TCP
       name: ftp
