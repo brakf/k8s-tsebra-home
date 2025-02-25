@@ -2,13 +2,29 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: traefik-dashboard
-  namespace: tsebra-home
+  namespace: traefik-system
 spec:
   defaultBackend:
     service:
-      name: traefik
+      name: traefik-dashboard
       port:
         number: 9000
+
   tls:
     - hosts:
         - traefik-dashboard.tsebra-home.de
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik-dashboard
+  namespace: traefik-system
+spec:
+  type: ClusterIP
+  ports:
+    - name: traefik
+      port: 9000
+      targetPort: traefik
+      protocol: TCP
+  selector:
+    app: traefik
