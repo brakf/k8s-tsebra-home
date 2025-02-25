@@ -31,7 +31,8 @@ data:
       smb:
         address: :445
     providers:
-      kubernetesCRD: {}
+      kubernetesCRD:
+        allowExternalNameServices: true
     #  ingressClass: traefik-crd
     api:
       # dashboard: true
