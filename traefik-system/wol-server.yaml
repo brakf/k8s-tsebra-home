@@ -13,6 +13,8 @@ spec:
       labels:
         app: wol-api
     spec:
+      nodeSelector:
+        node-role.kubernetes.io/master: "true"
       hostNetwork: true #needs to be on the same network as the server
       containers:
         - image: fbrak/docker-wol-api:arm64 # custom image build for arm based on https://github.com/rix1337/WakeOnLAN-API/blob/main/docker/Dockerfile
