@@ -7,6 +7,8 @@ metadata:
     app: home-assistant
 
 spec:
+  securityContext:
+    privileged: true
   replicas: 1
   selector:
     matchLabels:
