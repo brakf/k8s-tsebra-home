@@ -31,6 +31,6 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 8111
+      port: 80
       targetPort: 8111
   type: ClusterIP
