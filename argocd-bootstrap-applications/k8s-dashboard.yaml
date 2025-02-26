@@ -40,14 +40,19 @@ spec:
   routes:
     - kind: Rule
       match: Host(`kubernetes-dashboard.tsebra-home.de`)
+      priority: 30
       services:
         - name: kubernetes-dashboard-web
           port: 8000
-    - match: Host(`kubernetes-dashboard.tsebra-home.de`) && (PathPrefix(`/api/v1/login`) || PathPrefix(`/api/v1/csrftoken/login`) || PathPrefix(`/api/v1/me`))
+    - kind: Rule
+      match: Host(`kubernetes-dashboard.tsebra-home.de`) && (PathPrefix(`/api/v1/login`) || PathPrefix(`/api/v1/csrftoken/login`) || PathPrefix(`/api/v1/me`))
+      priority: 10
       services:
         - name: kubernetes-dashboard-auth
           port: 8000
-    - match: Host(`kubernetes-dashboard.tsebra-home.de`) && (PathPrefix(`/api`) || PathPrefix(`/metrics`))
+    - kind: Rule
+      match: Host(`kubernetes-dashboard.tsebra-home.de`) && (PathPrefix(`/api`) || PathPrefix(`/metrics`))
+      priority: 20
       services:
         - name: kubernetes-dashboard-api
           port: 8000
