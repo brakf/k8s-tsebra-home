@@ -18,10 +18,10 @@ spec:
         - image: fbrak/docker-wol-api:latest # custom image build for arm based on https://github.com/rix1337/WakeOnLAN-API/blob/main/docker/Dockerfile
           name: wol-api
           ports:
-            - containerPort: 8080
+            - containerPort: 8111
           env:
             - name: PORT
-              value: "8080"
+              value: "8111"
 ---
 apiVersion: v1
 kind: Service
@@ -31,6 +31,6 @@ metadata:
 spec:
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 8111
+      targetPort: 8111
   type: ClusterIP
