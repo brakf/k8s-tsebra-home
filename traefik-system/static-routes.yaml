@@ -35,7 +35,7 @@ metadata:
 spec:
   plugin:
     traefik-wol:
-      startUrl: http://wol-api.tsebra-home:8080/wol/90:09:D0:36:34:BD
+      startUrl: http://wol-api.tsebra-home:80/wol/90:09:D0:36:34:BD
       startMethod: GET
       numRetries: 5
       requestTimeout: 5
