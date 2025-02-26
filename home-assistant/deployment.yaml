@@ -7,8 +7,6 @@ metadata:
     app: home-assistant
 
 spec:
-  securityContext:
-    privileged: true
   replicas: 1
   selector:
     matchLabels:
@@ -28,6 +26,8 @@ spec:
           ports:
             - name: http
               containerPort: 8123
+          securityContext:
+            privileged: true
           # livenessProbe:
           #   httpGet:
           #     path: /health
