@@ -34,7 +34,7 @@ metadata:
   namespace: tsebra-home
 spec:
   entryPoints:
-    - http
+    - https
   routes:
     - kind: Rule
       match: Host(`kubernetes-dashboard.tsebra-home.de`)
