@@ -7,6 +7,11 @@ metadata:
     app: traefik
 data:
   traefik.yml: |
+    accessLog: {}
+    metrics:
+     otlp: {}
+    tracing: {}
+
     global:
       checkNewVersion: false
       sendAnonymousUsage: true
