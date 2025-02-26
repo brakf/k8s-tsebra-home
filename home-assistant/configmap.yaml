@@ -22,10 +22,6 @@ data:
     frontend:
       themes: !include_dir_merge_named themes
 
-    serial:
-      port: /dev/ttyACM0
-      adapter: zstack
-
     automation: !include automations.yaml
     script: !include scripts.yaml
     scene: !include scenes.yaml
