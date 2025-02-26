@@ -13,9 +13,9 @@ spec:
       labels:
         app: wol-api
     spec:
-      hostNetwork: true #needs to be on the same network like the servers it should wake up
+      hostNetwork: true #needs to be on the same network as the server
       containers:
-        - image: rix1337/docker-wol-api:latest
+        - image: fbrak/docker-wol-api:latest # custom image build for arm based on https://github.com/rix1337/WakeOnLAN-API/blob/main/docker/Dockerfile
           name: wol-api
           ports:
             - containerPort: 8080
