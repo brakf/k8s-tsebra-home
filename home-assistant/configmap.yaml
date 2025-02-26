@@ -7,22 +7,21 @@ metadata:
     app: home-assistant
 data:
   configuration.yaml: |
-    home-assistant::
-      # Loads default set of integrations. Do not remove.
-      default_config:
+    # Loads default set of integrations. Do not remove.
+    default_config:
 
-      http:
-        use_x_forwarded_for: true
-        trusted_proxies:
-          - 192.168.178.66
-          - 10.42.0.0/16
-      external_url: https://home-assistant.tsebra-home.de
-      # Load frontend themes from the themes folder
-      system_health:
-      zeroconf:
-      frontend:
-        themes: !include_dir_merge_named themes
+    http:
+      use_x_forwarded_for: true
+      trusted_proxies:
+        - 192.168.178.66
+        - 10.42.0.0/16
+    external_url: https://home-assistant.tsebra-home.de
+    # Load frontend themes from the themes folder
+    system_health:
+    zeroconf:
+    frontend:
+      themes: !include_dir_merge_named themes
 
-      automation: !include automations.yaml
-      script: !include scripts.yaml
-      scene: !include scenes.yaml
+    automation: !include automations.yaml
+    script: !include scripts.yaml
+    scene: !include scenes.yaml
