@@ -53,6 +53,7 @@ spec:
               mountPath: /config
             - name: configurationyaml
               mountPath: /config/configuration.yaml
+              subPath: configuration.yaml
       volumes:
         - name: ha-config-root
           persistentVolumeClaim:
