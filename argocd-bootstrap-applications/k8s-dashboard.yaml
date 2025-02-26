@@ -34,7 +34,7 @@ spec:
     syncOptions:
       - CreateNamespace=true
 ---
-apiVersion: v1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ServiceAccount
 metadata:
   name: kubernetes-dashboard-user
