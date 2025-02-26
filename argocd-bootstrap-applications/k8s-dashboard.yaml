@@ -45,7 +45,7 @@ spec:
         - name: kubernetes-dashboard-web
           port: 8000
     - kind: Rule
-      match: Host(`kubernetes-dashboard.tsebra-home.de`) && (PathPrefix(`/api/v1/login`) || PathPrefix(`/api/v1/csrftoken/login`) || PathPrefix(`/api/v1/me`))
+      match: Host(`kubernetes-dashboard.tsebra-home.de`) && (PathPrefix(`/api/v1/login`) || PathPrefix(`/api/v1/csrftoken/login`) ) #|| PathPrefix(`/api/v1/me`))
       priority: 100
       services:
         - name: kubernetes-dashboard-auth
