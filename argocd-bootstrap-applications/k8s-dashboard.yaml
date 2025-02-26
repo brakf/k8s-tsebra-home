@@ -15,7 +15,8 @@ spec:
     helm:
       releaseName: kubernetes-dashboard
       values: |
-      ingress:
+      app:
+        ingress:
           enabled: true
           hosts:
             - kubernetes-dashboard.tsebra-home.de
