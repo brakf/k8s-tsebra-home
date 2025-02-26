@@ -58,6 +58,7 @@ subjects:
 
 # i couldn't get traefik to work so i simply did port forwarding to the dashboard...
 # ---
+---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
