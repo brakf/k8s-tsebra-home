@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mineo-data
+  name: minio-data
   namespace: tsebra-home
 spec:
   accessModes:

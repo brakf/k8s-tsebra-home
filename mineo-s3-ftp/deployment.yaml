@@ -1,33 +1,33 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: mineo
+  name: minio
   namespace: tsebra-home
   labels:
-    app: mineo
+    app: minio
 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mineo
+      app: minio
   template:
     metadata:
       labels:
-        app: mineo
+        app: minio
     spec:
       # securityContext:
       #   capabilities:
       #     add:
       #       - NET_ADMIN
       containers:
-        - name: mineo
+        - name: minio
           image: minio/minio
           ports:
             - name: http-api
               containerPort: 9000
             - name: http-webui
-              containerPort: 9002
+              containerPort: 37935
             - name: ftp
               containerPort: 8021
           env:
@@ -36,14 +36,19 @@ spec:
             - name: MINIO_SECRET_KEY
               value: bUQnd7UFy6dG50JoJovNabzj*Szzm35LB^04fwZ
             - name: MINIO_OPTS
-              value: --console-address=":9002" --ftp="address=:8021" --ftp="passive-port-range=30000-40000"
+              value: --ftp="address=:8021" --ftp="passive-port-range=30000-40000"
             # - name: MINIO_DOMAIN
             #   value: mineo.tsebra.com
           volumeMounts:
-            - name: mineo-data
+            - name: minio-data
               mountPath: /data
-          command: ["/bin/sh", "-c", "minio server /data --console-address \":9002\" --ftp \"address=:8021\" --ftp \"passive-port-range=30000-40000\""]
+          command:
+            [
+              "/bin/sh",
+              "-c",
+              'minio server /data --console-address ":9002" --ftp "address=:8021" --ftp "passive-port-range=30000-40000"',
+            ]
       volumes:
-        - name: mineo-data
+        - name: minio-data
           persistentVolumeClaim:
-            claimName: mineo-data
+            claimName: minio-data
