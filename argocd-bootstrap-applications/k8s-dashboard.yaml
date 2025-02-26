@@ -72,7 +72,8 @@ spec:
       match: Host(`kubernetes-dashboard.tsebra-home.de`)
       # priority: 30
       services:
-        - name: kubernetes-dashboard-kong-proxy
+        - kind: Service
+          name: kubernetes-dashboard-kong-proxy
           port: 443
           serversTransport: dashboard-backend-skipverify
     # - kind: Rule
