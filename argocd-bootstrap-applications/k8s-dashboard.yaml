@@ -14,12 +14,14 @@ spec:
     targetRevision: 7.10.4
     helm:
       releaseName: kubernetes-dashboard
-      values: |
-        ingress:
-            enabled: true
-            ingressClassName: tailscale
-            tls:
-              enabled: true
+      # values: |
+      # ingress:
+      #     enabled: true
+      #     hosts:
+      #       - kubernetes-dashboard.tsebra-home.de
+      #     useDefaultIngressClass: true
+      #     tls:
+      #       enabled: true
   syncPolicy:
     automated:
       prune: true
@@ -40,6 +42,14 @@ spec:
       match: Host(`kubernetes-dashboard.tsebra-home.de`)
       services:
         - name: kubernetes-dashboard-web
+          port: 8000
+    - match: PathPrefix(`/api/v1/login`) || PathPrefix(`/api/v1/csrftoken/login`) || PathPrefix(`/api/v1/me`)
+      services:
+        - name: kubernetes-dashboard-auth
+          port: 8000
+    - match: PathPrefix(`/api`) || PathPrefix(`/metrics`)
+      services:
+        - name: kubernetes-dashboard-api
           port: 8000
   tls:
     certResolver: default
