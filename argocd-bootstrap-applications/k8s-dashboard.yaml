@@ -43,11 +43,11 @@ spec:
       services:
         - name: kubernetes-dashboard-web
           port: 8000
-    - match: PathPrefix(`/api/v1/login`) || PathPrefix(`/api/v1/csrftoken/login`) || PathPrefix(`/api/v1/me`)
+    - match: Host(`kubernetes-dashboard.tsebra-home.de`) && (PathPrefix(`/api/v1/login`) || PathPrefix(`/api/v1/csrftoken/login`) || PathPrefix(`/api/v1/me`))
       services:
         - name: kubernetes-dashboard-auth
           port: 8000
-    - match: PathPrefix(`/api`) || PathPrefix(`/metrics`)
+    - match: Host(`kubernetes-dashboard.tsebra-home.de`) && (PathPrefix(`/api`) || PathPrefix(`/metrics`))
       services:
         - name: kubernetes-dashboard-api
           port: 8000
