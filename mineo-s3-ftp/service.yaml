@@ -6,8 +6,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 37935
-      targetPort: 37935
+    - port: 9002
+      targetPort: 9002
       protocol: TCP
       name: http-webui
   selector:

@@ -27,7 +27,7 @@ spec:
             - name: http-api
               containerPort: 9000
             - name: http-webui
-              containerPort: 37935
+              containerPort: 9002
             - name: ftp
               containerPort: 8021
           env:
@@ -36,7 +36,7 @@ spec:
             - name: MINIO_SECRET_KEY
               value: bUQnd7UFy6dG50JoJovNabzj*Szzm35LB^04fwZ
             - name: MINIO_OPTS
-              value: --ftp="address=:8021" --ftp="passive-port-range=30000-40000"
+              value: --console-address=":9002" --ftp="address=:8021" --ftp="passive-port-range=30000-40000"
             # - name: MINIO_DOMAIN
             #   value: mineo.tsebra.com
           volumeMounts:
