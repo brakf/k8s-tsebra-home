@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: mineo-webui
+  name: minio-webui
   namespace: tsebra-home
 spec:
   type: ClusterIP
@@ -11,15 +11,15 @@ spec:
       protocol: TCP
       name: http-webui
   selector:
-    app: mineo
+    app: minio
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mineo-api
+  name: minio-api
   namespace: tsebra-home
   labels:
-    app: mineo
+    app: minio
 spec:
   type: ClusterIP
   ports:
@@ -28,12 +28,12 @@ spec:
       protocol: TCP
       name: http-api
   selector:
-    app: mineo
+    app: minio
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: mineo-ftp
+  name: minio-ftp
   namespace: tsebra-home
 spec:
   type: ClusterIP
@@ -43,4 +43,4 @@ spec:
       protocol: TCP
       name: ftp
   selector:
-    app: mineo
+    app: minio

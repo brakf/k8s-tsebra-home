@@ -37,8 +37,6 @@ spec:
               value: bUQnd7UFy6dG50JoJovNabzj*Szzm35LB^04fwZ
             - name: MINIO_OPTS
               value: --console-address=":9002" --ftp="address=:8021" --ftp="passive-port-range=30000-40000"
-            # - name: MINIO_DOMAIN
-            #   value: mineo.tsebra.com
           volumeMounts:
             - name: minio-data
               mountPath: /data
