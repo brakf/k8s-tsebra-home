@@ -15,11 +15,11 @@ spec:
     helm:
       releaseName: esphome
       values: |
-      persistenence:
-        config:
-          enabled: true
-      podSecurityContext:
-        privileged: true
+        persistenence:
+          config:
+            enabled: true
+        podSecurityContext:
+          privileged: true
   syncPolicy:
     automated:
       prune: true
