@@ -15,7 +15,7 @@ spec:
     helm:
       releaseName: esphome
       values: |
-        persistenence:
+        persistence:
           config:
             enabled: true
         podSecurityContext:
