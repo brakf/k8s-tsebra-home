@@ -18,6 +18,8 @@ spec:
       persistenence:
         config:
           enabled: true
+      podSecurityContext:
+        privileged: true
   syncPolicy:
     automated:
       prune: true
