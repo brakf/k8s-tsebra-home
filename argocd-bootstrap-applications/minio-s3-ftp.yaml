@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mineo-s3-ftp
+  name: minio-s3-ftp
   namespace: argocd
 spec:
   destination:
@@ -9,6 +9,6 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: mineo-s3-ftp
+    path: minio-s3-ftp
     repoURL: https://github.com/brakf/k8s-tsebra-home
     targetRevision: HEAD
