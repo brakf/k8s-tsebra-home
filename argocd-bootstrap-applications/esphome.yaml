@@ -14,12 +14,11 @@ spec:
     targetRevision: 8.4.2
     helm:
       releaseName: esphome
-      values: |
-        persistence:
-          config:
-            enabled: true
-        podSecurityContext:
-          privileged: true
+      parameters:
+        - name: persistence.config.enabled
+          value: "true"
+        - name: podSecurityContext.privileged
+          value: "true"
   syncPolicy:
     automated:
       prune: true
