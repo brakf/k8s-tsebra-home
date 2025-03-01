@@ -8,4 +8,6 @@ metadata:
 data:
   NFS_EXPORT_0: /nfs/normal-scans *(rw,no_subtree_check)
   NFS_EXPORT_1: /nfs/paperless-scans *(rw,no_subtree_check)
-  NFS_EXPORT_2: /nfs/nas-outbound *(rw,no_subtree_check)
+  NFS_EXPORT_2: /nfs/nas-outbound 192.168.178.0/24(rw,no_subtree_check)
+  NFS_EXPORT_3: /nfs/nas-test *(rw,no_subtree_check)
+  NFS_EXPORT_4: /mnt/disk1        192.168.6.0/24(ro,async,subtree_check,insecure,fsid=11)
