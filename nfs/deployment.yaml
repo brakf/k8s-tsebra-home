@@ -4,6 +4,10 @@ metadata:
   name: nfs
   namespace: tsebra-home
 spec:
+  securityContext:
+    capabilities:
+      add:
+        - SYS_ADMIN
   selector:
     matchLabels:
       app: nfs
