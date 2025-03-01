@@ -7,5 +7,6 @@ metadata:
     app: nfs
 data:
   NFS_EXPORT_0: /nfs/normal-scans *(rw,no_subtree_check)
-  NFS_EXPORT_1: /nfs/paperless-scans *(rw,no_subtree_check)
-  NFS_EXPORT_2: /nfs/nas-outbound *(rw,no_subtree_check)
+  # NFS_EXPORT_0: /nfs/normal-scans *(rw,no_subtree_check)
+  # NFS_EXPORT_1: /nfs/paperless-scans *(rw,no_subtree_check)
+  # NFS_EXPORT_2: /nfs/nas-outbound *(rw,no_subtree_check)
