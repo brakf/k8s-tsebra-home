@@ -14,13 +14,47 @@ spec:
     targetRevision: 69.6.0
     # helm:
     #   releaseName: prometheus-grafana
-      # values: |
-      #   oauth:
-      #     clientId: ""
-      #     clientSecret: ""
+    # values: |
+    #   oauth:
+    #     clientId: ""
+    #     clientSecret: ""
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus-grafana
+  namespace: monitoring
+spec:
+  entryPoints:
+    - https
+  routes:
+    - kind: Rule
+      match: Host(`grafana.tsebra-home.de`)
+      services:
+        - name: prometheus-grafana
+          port: 80
+  tls:
+    certResolver: default
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  entryPoints:
+    - https
+  routes:
+    - kind: Rule
+      match: Host(`prometheus.tsebra-home.de`)
+      services:
+        - name: prometheus-grafana-kube-pr-prometheus
+          port: 8080
+  tls:
+    certResolver: default
