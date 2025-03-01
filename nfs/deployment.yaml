@@ -5,9 +5,7 @@ metadata:
   namespace: tsebra-home
 spec:
   securityContext:
-    capabilities:
-      add:
-        - SYS_ADMIN
+    privileged: true
   selector:
     matchLabels:
       app: nfs
