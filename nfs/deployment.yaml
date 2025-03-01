@@ -4,8 +4,6 @@ metadata:
   name: nfs
   namespace: tsebra-home
 spec:
-  securityContext:
-    privileged: true
   selector:
     matchLabels:
       app: nfs
@@ -26,6 +24,8 @@ spec:
           volumeMounts:
             - name: data
               mountPath: /mnt
+          securityContext:
+            privileged: true
       volumes:
         - name: data
           persistentVolumeClaim:
