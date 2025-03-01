@@ -27,7 +27,7 @@ spec:
                 name: nfs-config
           volumeMounts:
             - name: data
-              mountPath: /nfs
+              mountPath: /mnt
       volumes:
         - name: data
           persistentVolumeClaim:
