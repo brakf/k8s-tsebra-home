@@ -18,13 +18,9 @@ spec:
           name: nfs
           ports:
             - containerPort: 2049
-          env:
-            - name: NFS_EXPORT_0
-              value: /nfs/normal-scans *(rw,no_subtree_check)
-            - name: NFS_EXPORT_1
-              value: /nfs/paperless-scans *(rw,no_subtree_check)
-            - name: NFS_EXPORT_2
-              value: /nfs/nas-outbound *(rw,no_subtree_check)
+          envFrom:
+            - configMapRef:
+                name: nfs-config
           volumeMounts:
             - name: data
               mountPath: /nfs
