@@ -23,7 +23,14 @@ spec:
                 name: nfs-config
           volumeMounts:
             - name: data
-              mountPath: /mnt
+              mountPath: /nfs
+              subPath: normal-scans
+            - name: data
+              mountPath: /nfs
+              subPath: paperless-scans
+            - name: data
+              mountPath: /nfs
+              subPath: nas-outbound
           securityContext:
             privileged: true
       volumes:
