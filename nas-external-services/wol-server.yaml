@@ -36,3 +36,17 @@ spec:
       port: 80
       targetPort: 8111
   type: ClusterIP
+---
+apiVersion: traefik.io/v1alpha1
+kind: Middleware
+metadata:
+  name: traefik-wol-nas
+  namespace: tsebra-home
+spec:
+  plugin:
+    traefik-wol:
+      startUrl: http://tsebra-k8s.tsebra-home.de:8111/wol/90:09:D0:36:34:BD
+      startMethod: GET
+      numRetries: 5
+      requestTimeout: 60
+      HealthCheck: http://192.168.178.94:5000
