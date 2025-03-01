@@ -6,6 +6,7 @@ metadata:
   labels:
     app: nfs
 data:
+  NFS_PORT: "2049"
   NFS_EXPORT_0: /nfs/ *(rw,fsid=1,no_subtree_check)
   # NFS_EXPORT_0: /nfs/normal-scans *(rw,no_subtree_check)
   # NFS_EXPORT_1: /nfs/paperless-scans *(rw,no_subtree_check)
