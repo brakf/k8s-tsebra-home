@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: esphome
+  namespace: tsebra-home
+  
+spec:
+  type: ClusterIP
+  ports:
+    - port: 6052
+      targetPort: 6052
+      protocol: TCP
+      name: http
+  selector:
+    app: esphome

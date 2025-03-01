@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: esphome
+  namespace: tsebra-home
+spec:
+  entryPoints:
+    - https
+  routes:
+    - kind: Rule
+      match: Host(`esphome.tsebra-home.de`)
+      services:
+        - name: esphome
+          port: 6052
+  tls:
+    certResolver: default

@@ -9,37 +9,12 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    chart: esphome
-    repoURL: https://k8s-at-home.com/charts/
-    targetRevision: 8.4.2
-    helm:
-      releaseName: esphome
-      parameters:
-        - name: persistence.config.enabled
-          value: "true"
-        - name: podSecurityContext.privileged
-          value: "true"
+    path: esphome
+    repoURL: https://github.com/brakf/k8s-tsebra-home
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
----
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
-metadata:
-  name: esphome
-  namespace: tsebra-home
-spec:
-  entryPoints:
-    - https
-  routes:
-    - kind: Rule
-      match: Host(`esphome.tsebra-home.de`)
-      services:
-        - kind: Service
-          name: esphome
-          port: 6052
-  tls:
-    certResolver: default
+      - CreateNamespace=false
