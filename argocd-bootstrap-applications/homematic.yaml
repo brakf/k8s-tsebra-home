@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: homematic
+  namespace: argocd
+spec:
+  destination:
+    namespace: tsebra-home
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: homematic
+    repoURL: https://github.com/brakf/k8s-tsebra-home
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=false

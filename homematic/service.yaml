@@ -1,0 +1,112 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: homatic
+  namespace: tsebra-home
+
+spec:
+  type: ClusterIP
+  ports:
+    - name: eq3configd
+      port: 43439
+      protocol: UDP
+      targetPort: eq3configd
+    - name: hmip
+      port: 2010
+      protocol: TCP
+      targetPort: hmip
+    - name: hmip-proxy
+      port: 32010
+      protocol: TCP
+      targetPort: hmip-proxy
+    - name: hmip-tls
+      port: 42010
+      protocol: TCP
+      targetPort: hmip-tls
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
+    - name: http-proxy
+      port: 8099
+      protocol: TCP
+      targetPort: http-proxy
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: https
+    - name: rega
+      port: 8181
+      protocol: TCP
+      targetPort: rega
+    - name: rega-proxy
+      port: 8183
+      protocol: TCP
+      targetPort: rega-proxy
+    - name: rega-tls
+      port: 48181
+      protocol: TCP
+      targetPort: rega-tls
+    - name: rfd
+      port: 2001
+      protocol: TCP
+      targetPort: rfd
+    - name: rfd-proxy
+      port: 32001
+      protocol: TCP
+      targetPort: rfd-proxy
+    - name: rfd-tls
+      port: 42001
+      protocol: TCP
+      targetPort: rfd-tls
+    - name: snmp
+      port: 161
+      protocol: UDP
+      targetPort: snmp
+    - name: ssh
+      port: 22
+      protocol: TCP
+      targetPort: ssh
+    - name: upnp
+      port: 1900
+      protocol: UDP
+      targetPort: upnp
+    - name: virt-dev
+      port: 9292
+      protocol: TCP
+      targetPort: virt-dev
+    - name: virt-dev-proxy
+      port: 39292
+      protocol: TCP
+      targetPort: virt-dev-proxy
+    - name: virt-dev-tls
+      port: 49292
+      protocol: TCP
+      targetPort: virt-dev-tls
+    - name: wired
+      port: 2000
+      protocol: TCP
+      targetPort: wired
+    - name: wired-proxy
+      port: 32000
+      protocol: TCP
+      targetPort: wired-proxy
+    - name: wired-tls
+      port: 42000
+      protocol: TCP
+      targetPort: wired-tls
+    - name: xmlrpc
+      port: 1999
+      protocol: TCP
+      targetPort: xmlrpc
+    - name: xmlrpc-proxy
+      port: 31999
+      protocol: TCP
+      targetPort: xmlrpc-proxy
+    - name: xmlrpc-tls
+      port: 41999
+      protocol: TCP
+      targetPort: xmlrpc-tls
+
+  selector:
+    app: homatic
