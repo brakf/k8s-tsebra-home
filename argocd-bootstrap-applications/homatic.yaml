@@ -175,3 +175,20 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=false
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: homatic
+  namespace: tsebra-home
+spec:
+  entryPoints:
+    - https
+  routes:
+    - kind: Rule
+      match: Host(`homatic.tsebra-home.de`)
+      services:
+        - name: homatic
+          port: 8099
+  tls:
+    certResolver: default
