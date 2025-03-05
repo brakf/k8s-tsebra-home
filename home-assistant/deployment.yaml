@@ -16,6 +16,7 @@ spec:
       labels:
         app: home-assistant
     spec:
+      hostNetwork: true
       # securityContext:
       #   capabilities:
       #     add:
@@ -50,6 +51,7 @@ spec:
           #   failureThreshold: 30
           #   timeoutSeconds: 1
           #   periodSeconds: 5
+
           volumeMounts:
             - name: ha-config-root
               mountPath: /config
