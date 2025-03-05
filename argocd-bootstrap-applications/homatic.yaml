@@ -14,19 +14,19 @@ spec:
     targetRevision: 3.79.6
     helm:
       values: |
-        persistence:
-          data:
-            # -- enabling persistent data. See options at https://bjw-s.github.io/helm-charts/docs/common-library/common-library-storage/
-            enabled: true
-            mountPath: /usr/local
-          sys:
-            enabled: true
-            type: hostPath
-            hostPath: /sys
-          modules:
-            enabled: true
-            type: hostPath
-            hostPath: /lib/modules
+        # persistence:
+        #   data:
+        #     # -- enabling persistent data. See options at https://bjw-s.github.io/helm-charts/docs/common-library/common-library-storage/
+        #     enabled: true
+        #     mountPath: /usr/local
+        #   sys:
+        #     enabled: true
+        #     type: hostPath
+        #     hostPath: /sys
+        #   modules:
+        #     enabled: true
+        #     type: hostPath
+        #     hostPath: /lib/modules
 
         securityContext:
           # -- Use privileged to access the Homematic HW
