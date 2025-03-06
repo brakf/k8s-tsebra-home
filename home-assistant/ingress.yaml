@@ -19,6 +19,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: home-assistant-public
+  namespace: tsebra-home
   annotations:
     tailscale.com/funnel: "true"
 spec:
