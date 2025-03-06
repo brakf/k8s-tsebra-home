@@ -24,13 +24,13 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
----
-apiVersion: tailscale.com/v1alpha1
-kind: Connector
-metadata:
-  name: tsebra-home
-spec:
-  hostname: tsebra-home
-  subnetRouter:
-    advertiseRoutes:
-      - "10.40.0.0/14"
+# ---
+# apiVersion: tailscale.com/v1alpha1
+# kind: Connector
+# metadata:
+#   name: tsebra-home
+# spec:
+#   hostname: tsebra-home
+#   subnetRouter:
+#     advertiseRoutes:
+#       - "10.40.0.0/14"
