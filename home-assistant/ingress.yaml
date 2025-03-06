@@ -26,7 +26,7 @@ spec:
     service:
       name: home-assistant
       port:
-        number: 8123
+        number: 80
   ingressClassName: tailscale
   tls:
     - hosts:
