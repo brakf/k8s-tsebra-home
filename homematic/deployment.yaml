@@ -125,6 +125,7 @@ spec:
               readOnly: true
             - mountPath: /sys
               name: sys
+              readOnly: true
             - mountPath: /usr/local
               name: data
           # livenessProbe:
@@ -156,8 +157,11 @@ spec:
             path: /lib/modules
             type: Directory
         - name: sys
-          persistentVolumeClaim:
-            claimName: homematic-sys
+          # persistentVolumeClaim:
+          # claimName: homematic-sys
+          hostPath:
+            path: /sys
+            type: Directory
         - name: data
           persistentVolumeClaim:
             claimName: homematic-data
