@@ -25,7 +25,7 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: home-assistant
+      name: home-assistant-public
       port:
         number: 80
   ingressClassName: tailscale
