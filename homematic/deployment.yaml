@@ -1,10 +1,10 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: homatic
+  name: homematic
   namespace: tsebra-home
   labels:
-    app: homatic
+    app: homematic
 
 spec:
   replicas: 1
@@ -14,7 +14,7 @@ spec:
   template:
     metadata:
       labels:
-        app: homatic
+        app: homematic
     spec:
       hostNetwork: true
       # securityContext:
@@ -22,7 +22,7 @@ spec:
       #     add:
       #       - NET_ADMIN
       containers:
-        - name: homatic
+        - name: homematic
           image: ghcr.io/jens-maus/raspberrymatic:3.79.6.20250220
           ports:
             - containerPort: 43439
@@ -157,7 +157,7 @@ spec:
             type: Directory
         - name: sys
           persistentVolumeClaim:
-            claimName: homeatic-sys
+            claimName: homematic-sys
         - name: data
           persistentVolumeClaim:
-            claimName: homeatic-data
+            claimName: homematic-data

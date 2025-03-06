@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: homeatic-data
+  name: homematic-data
   namespace: tsebra-home
 spec:
   accessModes:

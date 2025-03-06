@@ -8,9 +8,9 @@ spec:
     - https
   routes:
     - kind: Rule
-      match: Host(`homatic.tsebra-home.de`)
+      match: Host(`homematic.tsebra-home.de`)
       services:
-        - name: homatic
+        - name: homematic
           port: 8099
   tls:
     certResolver: default
