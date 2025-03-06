@@ -16,7 +16,7 @@ spec:
       labels:
         app: homematic
     spec:
-      hostNetwork: true
+      # hostNetwork: true
       # securityContext:
       #   capabilities:
       #     add:
