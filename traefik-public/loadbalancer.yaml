@@ -1,13 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: traefik
+  name: traefik-public
   namespace: traefik-public
 spec:
-  externalTrafficPolicy: Local
-  loadBalancerClass: tailscale
   selector:
-    app: traefik
+    app: traefik-public
   ports:
     - port: 80
       protocol: TCP
@@ -25,3 +23,19 @@ spec:
     #   protocol: TCP
     #   name: smb
   type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: traefik-public
+  namespace: traefik-public
+spec:
+  defaultBackend:
+    service:
+      name: traefik-public
+      port:
+        number: 80
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+        - traefik-public
