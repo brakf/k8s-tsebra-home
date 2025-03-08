@@ -19,8 +19,8 @@ kind: IngressRoute
 metadata:
   name: traefik-dashboard
   namespace: traefik-public
-  labels:
-    traefik-public: true
+labels:
+  traefik-public: true
 spec:
   entryPoints:
     - http
