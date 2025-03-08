@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traefik
+  namespace: traefik-public
+  labels:
+    app: traefik
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: traefik
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
+  template:
+    metadata:
+      labels:
+        app: traefik
+    spec:
+      serviceAccountName: traefik-account
+      containers:
+        - image: traefik:3.3
+          imagePullPolicy: IfNotPresent
+          name: traefik
+          readinessProbe:
+            httpGet:
+              path: /ping
+              port: 80
+            failureThreshold: 3
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 2
+          livenessProbe:
+            httpGet:
+              path: /ping
+              port: 80
+            failureThreshold: 3
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 2
+          ports:
+            - name: http
+              containerPort: 80
+            # - name: https
+            #   containerPort: 443
+            - name: dashboard
+              containerPort: 8080
+            # - name: nfs
+            #   containerPort: 2049
+            # - name: ftp
+            #   containerPort: 21
+            # - name: smb
+            #   containerPort: 445
+          # env:
+          #   - name: CF_DNS_API_TOKEN
+          #     valueFrom:
+          #       secretKeyRef:
+          #         name: traefik-dns-cloudflare-secrets
+          #         key: CF_DNS_API_TOKEN
+          volumeMounts:
+            # - mountPath: /acme
+            #   name: acme
+            - mountPath: /etc/traefik/traefik.yml
+              name: config-static
+              subPath: traefik.yml
+      volumes:
+        # - name: acme
+        #   persistentVolumeClaim:
+        #     claimName: traefik-acme-store
+        - name: config-static
+          configMap:
+            name: traefik-static

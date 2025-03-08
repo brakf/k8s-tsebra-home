@@ -11,9 +11,21 @@ spec:
       targetPort: 8123
       protocol: TCP
       name: http
+  selector:
+    app: home-assistant
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant-public
+  namespace: tsebra-home
+
+spec:
+  type: ClusterIP
+  ports:
     - port: 80
       targetPort: 8123
       protocol: TCP
-      name: http-default
+      name: http
   selector:
     app: home-assistant
