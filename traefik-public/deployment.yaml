@@ -1,15 +1,15 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: traefik
+  name: traefik-public
   namespace: traefik-public
   labels:
-    app: traefik
+    app: traefik-public
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: traefik
+      app: traefik-public
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -17,13 +17,13 @@ spec:
   template:
     metadata:
       labels:
-        app: traefik
+        app: traefik-public
     spec:
       serviceAccountName: traefik-account
       containers:
         - image: traefik:3.3
           imagePullPolicy: IfNotPresent
-          name: traefik
+          name: traefik-public  
           readinessProbe:
             httpGet:
               path: /ping
